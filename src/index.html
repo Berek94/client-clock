@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<style>
+		html {
+			height: 100%;
+		}
+		body {
+			margin: 0;
+			padding: 0;
+			height: 100%;
+			background-color: #E0E0E0;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+		}
+		.clocks {
+			display: flex;
+			justify-content: space-around;
+		}
+		.clocks-block {
+			position: relative;
+			border: 1px solid #9E9E9E;
+			border-radius: 5px;
+			padding: 10px;
+			background-color: #F5F5F5;
+			font-size: 60px
+		}
+		.controls {
+			position: absolute;
+			top: 10px;
+			left: 10px;
+		}
+		.controls button {
+			padding: 10px;
+			border-radius: 3px;
+			outline: none;
+			cursor: pointer;
+		}
+		.controls #run {
+			background-color: #00B0FF;
+		}
+		.controls #stop {
+			background-color: #FF7043;
+		}
+
+		#clocks--seconds::after {
+			content: 'on second change';
+			position: absolute;
+			top: -40px;
+			left: 0;
+			font-size: 30px;
+		}
+		#clocks--minutes::after {
+			white-space: nowrap;
+			content: 'on minute change';
+			position: absolute;
+			top: -40px;
+			left: 0;
+			font-size: 30px;
+		}
+		#clocks--hours::after {
+			white-space: nowrap;
+			content: 'on hour change';
+			position: absolute;
+			top: -40px;
+			left: 0;
+			font-size: 30px;
+		}
+	</style>
+</head>
+<body>
+	<div class="clocks">
+		<div id="clocks--seconds" class="clocks-block"></div>
+		<div id="clocks--minutes" class="clocks-block"></div>
+		<div id="clocks--hours" class="clocks-block"></div>
+	</div>
+	<div class="controls">
+		<button id="run">Запуск</button>
+		<button id="stop">Стоп</button>
+	</div>
+</body>
+</html>
