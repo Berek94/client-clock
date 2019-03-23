@@ -17,25 +17,30 @@ export default class ClientClock {
 	run() {
 		if (!this.isRunning) {
 			this.isRunning = true;
+			this.publish();
 			this.timerID = setInterval(() => {
-				this.nowDate = new Date();
-	
-				if (this.isSecondChanged) {
-					this.dispatch(CLIENT_CLOCK_ON_SECOND_CHANGE);
-				}
-				if (this.isMinuteChanged) {
-					this.dispatch(CLIENT_CLOCK_ON_MINUTE_CHANGE);
-				}
-				if (this.isHourChanged) {
-					this.dispatch(CLIENT_CLOCK_ON_HOUR_CHANGE);
-				}
-				if (this.isDayChanged) {
-					this.dispatch(CLIENT_CLOCK_ON_DAY_CHANGE);
-				}
-	
-				this.oldDate = this.nowDate;
+				this.publish();
 			}, 1000);
 		}
+	}
+
+	publish() {
+		this.nowDate = new Date();
+	
+		if (this.isSecondChanged) {
+			this.dispatch(CLIENT_CLOCK_ON_SECOND_CHANGE);
+		}
+		if (this.isMinuteChanged) {
+			this.dispatch(CLIENT_CLOCK_ON_MINUTE_CHANGE);
+		}
+		if (this.isHourChanged) {
+			this.dispatch(CLIENT_CLOCK_ON_HOUR_CHANGE);
+		}
+		if (this.isDayChanged) {
+			this.dispatch(CLIENT_CLOCK_ON_DAY_CHANGE);
+		}
+
+		this.oldDate = this.nowDate;
 	}
 
 	isTimeChanged(timeGetter) {
